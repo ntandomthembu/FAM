@@ -1,0 +1,13 @@
+CREATE TABLE permits (
+    id SERIAL PRIMARY KEY,
+    farm_id INT NOT NULL,
+    animal_type VARCHAR(255) NOT NULL,
+    movement_type VARCHAR(255) NOT NULL,
+    destination VARCHAR(255) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (farm_id) REFERENCES farms(id) ON DELETE CASCADE
+);

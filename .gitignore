@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+Thumbs.db
+coverage/
+.vercel/
+dashboard/node_modules/
+dashboard/dist/
+mobile/node_modules/
+fmd-control-platform/

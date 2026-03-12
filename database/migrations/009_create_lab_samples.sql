@@ -1,0 +1,10 @@
+CREATE TABLE lab_samples (
+    id SERIAL PRIMARY KEY,
+    incident_id INT NOT NULL,
+    sample_type VARCHAR(255) NOT NULL,
+    collection_date TIMESTAMP NOT NULL,
+    results VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (incident_id) REFERENCES incidents(id) ON DELETE CASCADE
+);

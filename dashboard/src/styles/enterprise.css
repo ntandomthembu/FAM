@@ -1543,4 +1543,122 @@ body {
 }
 
 /* ─── LOGIN PAGE ───────────────────────────────── */
-/* Login uses inline styles so no CSS needed here */
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 50%, #ecfeff 100%);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 1080px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    background: #fff;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+}
+
+.login-hero {
+    padding: 48px;
+    background: linear-gradient(160deg, #0f172a 0%, #1d4ed8 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.login-hero-title {
+    font-size: 40px;
+    line-height: 1.1;
+    margin: 0 0 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.login-form-panel {
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form-inner {
+    width: 100%;
+    max-width: 380px;
+}
+
+.login-tab-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: #f1f5f9;
+    padding: 6px;
+    border-radius: 12px;
+}
+
+.login-tab {
+    flex: 1;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    background: transparent;
+    color: #0f172a;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    transition: all 0.15s;
+}
+
+.login-tab.active {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 768px) {
+    .login-wrapper { padding: 0; }
+
+    .login-card {
+        grid-template-columns: 1fr;
+        border-radius: 0;
+        min-height: 100vh;
+        max-width: 100%;
+    }
+
+    .login-hero {
+        padding: 28px 20px;
+        gap: 16px;
+    }
+
+    .login-hero-title {
+        font-size: 24px;
+    }
+
+    .login-hero .login-hero-bullets {
+        display: none;
+    }
+
+    .login-form-panel {
+        padding: 24px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-hero {
+        padding: 20px 16px;
+    }
+
+    .login-hero-title {
+        font-size: 20px;
+    }
+
+    .login-form-panel {
+        padding: 16px;
+    }
+}

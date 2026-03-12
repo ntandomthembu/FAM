@@ -89,38 +89,14 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div style={{
-            minHeight: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 24,
-            background: 'linear-gradient(135deg, #eff6ff 0%, #f8fafc 50%, #ecfeff 100%)',
-        }}>
-            <div style={{
-                width: '100%',
-                maxWidth: 1080,
-                display: 'grid',
-                gridTemplateColumns: '1.1fr 0.9fr',
-                background: '#ffffff',
-                borderRadius: 24,
-                overflow: 'hidden',
-                boxShadow: '0 24px 60px rgba(15, 23, 42, 0.14)',
-            }}>
-                <div style={{
-                    padding: 48,
-                    background: 'linear-gradient(160deg, #0f172a 0%, #1d4ed8 100%)',
-                    color: '#ffffff',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    gap: 24,
-                }}>
+        <div className="login-wrapper">
+            <div className="login-card">
+                <div className="login-hero">
                     <div>
                         <div style={{ fontSize: 13, letterSpacing: 1.8, textTransform: 'uppercase', opacity: 0.8, marginBottom: 18 }}>
                             Foot-and-Mouth Disease Control
                         </div>
-                        <h1 style={{ fontSize: 40, lineHeight: 1.1, margin: '0 0 16px' }}>
+                        <h1 className="login-hero-title">
                             National operations dashboard
                         </h1>
                         <p style={{ margin: 0, color: 'rgba(255,255,255,0.82)', lineHeight: 1.7, maxWidth: 460 }}>
@@ -128,7 +104,7 @@ const Login: React.FC = () => {
                         </p>
                     </div>
 
-                    <div style={{ display: 'grid', gap: 14 }}>
+                    <div className="login-hero-bullets" style={{ display: 'grid', gap: 14 }}>
                         {[
                             'Monitor live outbreak metrics and heatmap activity.',
                             'Coordinate incident response, permits, and quarantine actions.',
@@ -153,46 +129,20 @@ const Login: React.FC = () => {
                     </div>
                 </div>
 
-                <div style={{ padding: 40, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <div style={{ width: '100%', maxWidth: 380 }}>
-                        <div style={{ display: 'flex', gap: 8, marginBottom: 24, background: '#f1f5f9', padding: 6, borderRadius: 12 }}>
+                <div className="login-form-panel">
+                    <div className="login-form-inner">
+                        <div className="login-tab-bar">
                             <button
                                 type="button"
-                                onClick={() => {
-                                    setMode('login');
-                                    setError(null);
-                                }}
-                                style={{
-                                    flex: 1,
-                                    border: 0,
-                                    borderRadius: 8,
-                                    padding: '10px 14px',
-                                    background: mode === 'login' ? '#ffffff' : 'transparent',
-                                    color: '#0f172a',
-                                    fontWeight: 700,
-                                    cursor: 'pointer',
-                                    boxShadow: mode === 'login' ? '0 2px 8px rgba(15,23,42,0.08)' : 'none',
-                                }}
+                                className={`login-tab${mode === 'login' ? ' active' : ''}`}
+                                onClick={() => { setMode('login'); setError(null); }}
                             >
                                 Sign In
                             </button>
                             <button
                                 type="button"
-                                onClick={() => {
-                                    setMode('register');
-                                    setError(null);
-                                }}
-                                style={{
-                                    flex: 1,
-                                    border: 0,
-                                    borderRadius: 8,
-                                    padding: '10px 14px',
-                                    background: mode === 'register' ? '#ffffff' : 'transparent',
-                                    color: '#0f172a',
-                                    fontWeight: 700,
-                                    cursor: 'pointer',
-                                    boxShadow: mode === 'register' ? '0 2px 8px rgba(15,23,42,0.08)' : 'none',
-                                }}
+                                className={`login-tab${mode === 'register' ? ' active' : ''}`}
+                                onClick={() => { setMode('register'); setError(null); }}
                             >
                                 Register
                             </button>

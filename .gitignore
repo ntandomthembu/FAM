@@ -10,3 +10,6 @@ dashboard/node_modules/
 dashboard/dist/
 mobile/node_modules/
 fmd-control-platform/
+
+# Local Netlify folder
+.netlify

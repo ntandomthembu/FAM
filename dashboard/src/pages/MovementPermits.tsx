@@ -56,10 +56,11 @@ const MovementPermits: React.FC = () => {
         }));
     };
 
-    const openModal = () => {
+    const openModal = async () => {
         setForm({ originFarmId: '', destinationFarmId: '', selectedLivestockIds: [], reason: '' });
         setFarmLivestock([]);
         setModalOpen(true);
+        await loadFarms(); // refresh farm list so newly created farms appear
     };
 
     const handleSubmit = async (e: React.FormEvent) => {

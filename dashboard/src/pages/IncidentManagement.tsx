@@ -98,9 +98,10 @@ const IncidentManagement: React.FC = () => {
 
     useEffect(() => { load(); loadFarms(); }, []);
 
-    const openModal = () => {
+    const openModal = async () => {
         setForm({ description: '', farmId: '', species: 'cattle', symptoms: '', numberOfAnimalsAffected: 1 });
         setModalOpen(true);
+        await loadFarms(); // refresh farm list so newly created farms appear
     };
     const closeModal = () => { if (!submitting) setModalOpen(false); };
 

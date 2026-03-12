@@ -61,10 +61,11 @@ const ExportCompliance: React.FC = () => {
         }));
     };
 
-    const openModal = () => {
+    const openModal = async () => {
         setForm({ farmId: '', destinationCountry: '', selectedLivestockIds: [] });
         setFarmLivestock([]);
         setModalOpen(true);
+        await loadFarms(); // refresh farm list so newly created farms appear
     };
 
     const handleGenerate = async (e: React.FormEvent) => {

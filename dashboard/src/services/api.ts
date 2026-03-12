@@ -265,9 +265,46 @@ const mockCertificates: any[] = [
     },
 ];
 
+// --- LocalStorage persistence for mock data ---
+const persistAll = () => {
+    try {
+        localStorage.setItem('fmd_farms', JSON.stringify(mockFarms));
+        localStorage.setItem('fmd_incidents', JSON.stringify(mockIncidents));
+        localStorage.setItem('fmd_livestock', JSON.stringify(mockLivestock));
+        localStorage.setItem('fmd_permits', JSON.stringify(mockPermits));
+        localStorage.setItem('fmd_zones', JSON.stringify(mockQuarantineZones));
+        localStorage.setItem('fmd_campaigns', JSON.stringify(mockCampaigns));
+        localStorage.setItem('fmd_vaccineStock', JSON.stringify(mockVaccineStock));
+        localStorage.setItem('fmd_certificates', JSON.stringify(mockCertificates));
+    } catch { /* storage full or unavailable */ }
+};
+
+// Hydrate mock arrays from localStorage on startup so data survives refresh
+(() => {
+    const hydrate = (key: string, arr: any[]) => {
+        try {
+            const stored = localStorage.getItem(key);
+            if (stored) {
+                const parsed = JSON.parse(stored);
+                arr.length = 0;
+                arr.push(...parsed);
+            }
+        } catch { /* ignore corrupt data */ }
+    };
+    hydrate('fmd_farms', mockFarms);
+    hydrate('fmd_incidents', mockIncidents);
+    hydrate('fmd_livestock', mockLivestock);
+    hydrate('fmd_permits', mockPermits);
+    hydrate('fmd_zones', mockQuarantineZones);
+    hydrate('fmd_campaigns', mockCampaigns);
+    hydrate('fmd_vaccineStock', mockVaccineStock);
+    hydrate('fmd_certificates', mockCertificates);
+})();
+
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value));
 
 const mockDelay = async <T,>(value: T) => {
+    persistAll(); // save all mock data after every operation
     await new Promise((resolve) => setTimeout(resolve, 120));
     return clone(value);
 };
